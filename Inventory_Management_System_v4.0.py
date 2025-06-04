@@ -86,8 +86,7 @@ def display_main_menu():
     print("4. Update Item")
     print("5. Delete Item")
     print("6. Adjust Stock (+/-)")
-    print("7. Generate Reports")
-    print("8. Credits")
+    print("7. Credits")
     print("0. Exit")
 
 
@@ -357,51 +356,6 @@ def adjust_stock(inventory):
 
     input("\nPress Enter to continue...")
 
-
-def generate_reports(inventory):
-    """Generate inventory reports"""
-    clear_screen()
-    print("INVENTORY REPORTS")
-    print("----------------")
-    print("\n1. Low Stock Alert")
-    print("2. Total Inventory Value")
-    print("0. Back to Main Menu")
-
-    choice = get_valid_input("\nSelect report option (1-2): ", int, allow_back=False)
-
-    if choice == 1:
-        # Low stock report
-        low_stock = [item for item in inventory if item['quantity'] < MIN_STOCK_ALERT]
-
-        clear_screen()
-        print("LOW STOCK ALERT")
-        print("--------------")
-
-        if not low_stock:
-            print("\nNo items below stock threshold (10)")
-        else:
-            print(f"\nItems below {MIN_STOCK_ALERT} units:")
-            print("\nID    Name                 Qty    Price")
-            print("--------------------------------------")
-            for item in low_stock:
-                print(f"{item['id']:<5} {item['name'][:18]:<18} {item['quantity']:>5}   ₱{item['price']:>7.2f}")
-
-        input("\nPress Enter to continue...")
-
-    elif choice == 2:
-        # Total inventory value
-        total_value = sum(item['quantity'] * item['price'] for item in inventory)
-
-        clear_screen()
-        print("TOTAL INVENTORY VALUE")
-        print("---------------------")
-        print(f"\nTotal Value: ₱{total_value:,.2f}")
-        input("\nPress Enter to continue...")
-
-    elif choice == 0:
-        return
-
-
 def show_credits():
     """Display credits screen"""
     clear_screen()
@@ -427,7 +381,7 @@ def main():
 
     while True:
         display_main_menu()
-        choice = get_valid_input("\nSelect an option (0-8): ", int, allow_back=False)
+        choice = get_valid_input("\nSelect an option (0-7): ", int, allow_back=False)
 
         if choice == 1:
             add_item(inventory)
@@ -442,15 +396,13 @@ def main():
         elif choice == 6:
             adjust_stock(inventory)
         elif choice == 7:
-            generate_reports(inventory)
-        elif choice == 8:
             show_credits()
         elif choice == 0:
             print("\nThank you for using the Inventory Management System!")
             print("Goodbye!")
             break
         else:
-            print("Invalid option. Please select 0-8.")
+            print("Invalid option. Please select 0-7.")
             input("\nPress Enter to continue...")
 
 
