@@ -5,6 +5,7 @@ file_path = r"C:\Users\DanielUdasco\Desktop\Workshop3_FinalProject\inventory_dat
 
 #CREATE inventory.txt if it doesn't exist
 def initialize_inventory_file():
+
     dir_path = os.path.dirname(file_path)
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
@@ -49,6 +50,7 @@ def save_inventory(items):
         print(f"Error saving inventory: {e}")
 
 #END OF FILE HANDLING SECTION-------------
+
 
 # Generate ID (unique to each other)
 def generate_new_id(inventory):

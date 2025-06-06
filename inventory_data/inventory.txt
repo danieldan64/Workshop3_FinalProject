@@ -1,1 +1,4 @@
-4,Oil,100,30.0
+1,Apple,20,10.0
+2,Banana,20,10.0
+3,Canned Sardines,30,25.0
+4,milo,22,10.0
